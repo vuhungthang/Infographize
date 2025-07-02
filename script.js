@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actionButtons.classList.add('hidden');
 
     const showHideForm = (show) => {
-        const display = show ? 'block' : 'none';
+        const display = show ? '' : 'none';
         mainHeading.style.display = display;
         introParagraph.style.display = display;
         textContent.style.display = display;
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     synthesisBtn.addEventListener('click', async () => {
         const content = textContent.value.trim();
         if (!content) {
-            alert('Please paste your content first.');
+            alert('Please enter some text to get started.');
             return;
         }
 
         showHideForm(false);
-        loadingMessage.textContent = "we're processing your content, please be patient";
+        loadingMessage.textContent = "Processing your content... This may take a moment.";
         loading.classList.remove('hidden');
 
         try {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error synthesizing text:', error);
-            alert('Failed to synthesize text. Please check the console for details.');
+            alert('An error occurred while synthesizing the text. Please try again.');
         } finally {
             loading.classList.add('hidden');
             showHideForm(true);
@@ -73,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
     generateBtn.addEventListener('click', async () => {
         const content = textContent.value.trim();
         if (!content) {
-            alert('Please paste your content first.');
+            alert('Please enter some text to get started.');
             return;
         }
 
         // Hide input form
         showHideForm(false);
 
-        loadingMessage.textContent = "Generating...";
+        loadingMessage.textContent = "Generating your infographic...";
         loading.classList.remove('hidden');
         resultContainer.style.display = 'none';
         actionButtons.classList.add('hidden');
@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             resultFrame.onload = () => {
                 const iframeDoc = resultFrame.contentWindow.document;
+
+                // Remove footer from generated content
+                const footer = iframeDoc.querySelector('footer');
+                if (footer) {
+                    footer.remove();
+                }
 
                 const style = iframeDoc.createElement('style');
                 style.textContent = `
@@ -138,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error fetching infographic:', error);
-            alert('Failed to generate infographic. Please check the console for details.');
+            alert('An error occurred while generating the infographic. Please try again.');
         } finally {
             loading.classList.add('hidden');
         }
