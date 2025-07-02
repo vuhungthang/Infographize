@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Infographize</h1>
+        <p>Turn your content into an infographic.</p>
+        <textarea id="textContent" rows="10" placeholder="e.g., A summary of the solar system..."></textarea>
+        <button id="generateBtn">Generate Infographic</button>
+        <button id="synthesisBtn">Synthesis Text</button>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <div id="loadingMessage"></div>
+        </div>
+        <div id="resultContainer" style="display: none;">
+            <iframe id="resultFrame" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+        </div>
+        <div id="actionButtons" class="hidden">
+            <button id="printBtn">Print</button>
+            <button id="newBtn">Create New</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
