@@ -48,6 +48,14 @@ p {
     margin-bottom: 30px;
 }
 
+#synthesisNote {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4A4A4A;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
+
 textarea {
     width: 100%;
     padding: 15px;

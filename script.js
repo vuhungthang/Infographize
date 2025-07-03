@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const actionButtons = document.getElementById('actionButtons');
     const mainHeading = document.querySelector('.container h1');
     const introParagraph = document.querySelector('.container p');
+    const synthesisNote = document.getElementById('synthesisNote');
 
     const apiUrl = 'https://infographize-api.onrender.com/api/infographic';
     const synthesisApiUrl = 'https://infographize-api.onrender.com/api/synthesis';
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         textContent.style.display = display;
         generateBtn.style.display = display;
         synthesisBtn.style.display = display;
+        synthesisNote.style.display = display;
     };
 
     synthesisBtn.addEventListener('click', async () => {
